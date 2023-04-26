@@ -182,10 +182,11 @@ class CircuitRoutines(ABC):
         return hamiltonian
 
     def __setattr__(self, name, value):
-        if not self._frozen or name in dir(self):
-            super().__setattr__(name, value)
-        else:
-            raise Exception(f"Creating new attributes is disabled: [{name}, {value}].")
+        super().__setattr__(name, value)
+        # if not self._frozen or name in dir(self):
+        #     super().__setattr__(name, value)
+        # else:
+        #     raise Exception(f"Creating new attributes is disabled: [{name}, {value}].")
 
     def __reduce__(self):
         # needed for multiprocessing / proper pickling
